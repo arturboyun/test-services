@@ -1,0 +1,8 @@
+click==7.1.2
+envparse==0.2.0
+fastapi==0.61.2
+h11==0.11.0
+pika==1.1.0
+pydantic==1.7.2
+starlette==0.13.6
+uvicorn==0.12.2

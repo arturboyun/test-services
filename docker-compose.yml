@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  api:
+    build: ./api
+    container_name: services_api
+    ports:
+      - "8000:80"
+    depends_on:
+      - rabbitmq
+    env_file: .env
+    networks:
+      - default
+
+  listener:
+    build: ./listener
+    container_name: services_listener
+    depends_on:
+      - rabbitmq
+    env_file: .env
+    networks:
+      - default
+
+  rabbitmq:
+    image: rabbitmq:latest
+    container_name: services_rabbitmq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    env_file: .env
+    networks:
+      - default
+
+networks:
+  default:
+    driver: bridge
